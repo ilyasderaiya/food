@@ -17,20 +17,22 @@ const SearchScreen = () => {
         });
     };
 
-    return <ScrollView showsVerticalScrollIndicator={false}>
-                <View>
-                    <SearchBar 
-                        term={term} 
-                        onTermChange={setTerm}
-                        onTermSubmit= {searchApi}
-                    />
-                    {errMsg ? <Text>{errMsg}</Text> : null}
-                    <Text>We have {results.length} results </Text>
-                    <ResultList results={filterResultByPrice("$")} title="Cost Effective"/> 
-                    <ResultList results={filterResultByPrice("$$")} title="Bit pricer"/>
-                    <ResultList results={filterResultByPrice("$$$")} title="Big spender"/>
-                </View>
+    return (
+        <View style={{ flex:1 }}>
+            <SearchBar 
+                term={term} 
+                onTermChange={setTerm}
+                onTermSubmit= {searchApi}
+            />
+            {/* {errMsg ? <Text>{errMsg}</Text> : null} */}
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <ResultList results={filterResultByPrice("$")} title="Cost Effective"/> 
+                <ResultList results={filterResultByPrice("$$")} title="Bit Pricer"/>
+                <ResultList results={filterResultByPrice("$$$")} title="Big Spender"/>
             </ScrollView>
+        </View>
+    );
+            
 };
 
 const styles = StyleSheet.create({});
