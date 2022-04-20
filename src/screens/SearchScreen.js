@@ -10,6 +10,7 @@ const SearchScreen = () => {
 
     const [term, setTerm] = useState("");
     const [searchApi, errMsg, results] = useResults();
+    console.log(results);
 
     const filterResultByPrice = (price) => {
         return results.filter(result => {
@@ -21,8 +22,8 @@ const SearchScreen = () => {
         <View style={{ flex:1 }}>
             <SearchBar 
                 term={term} 
-                onTermChange={setTerm}
-                onTermSubmit= {searchApi}
+                onTermChange = {setTerm}
+                onTermSubmit = {() => searchApi(term)}
             />
             {/* {errMsg ? <Text>{errMsg}</Text> : null} */}
             <ScrollView showsVerticalScrollIndicator={false}>
